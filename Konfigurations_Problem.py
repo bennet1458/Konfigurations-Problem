@@ -43,7 +43,8 @@ def distance_calculation(positions):
     # x_distance = x_positions.T - x_positions
     # y_distance = y_positions.T - y_positions
     # distance = np.sqrt(x_distance**2 + y_distance**2)
-    distance = np.sqrt((positions.T[:1]-positions[:, :1])**2 + (positions.T[1:]-positions[:, 1:])**2)
+    # distance = np.sqrt((positions.T[:1]-positions[:, :1])**2 + (positions.T[1:]-positions[:, 1:])**2)
+    distance = np.sqrt(np.add.reduce((positions[:, :, None]-positions.T)**2, 1))
     return distance
 
 def plot_points(positions):
